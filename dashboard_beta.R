@@ -3367,11 +3367,13 @@ server <- (function(input, output,session) {
     
     if(selectedPredType == "Mortality" && selectedTypeDise == "sepsis-3") {
       stats_aux$HOSPITAL_EXPIRE_FLAG <- ifelse(stats_aux$HOSPITAL_EXPIRE_FLAG == 1, "Death", "Alive")
+      stats_aux <- stats_aux[, !names(stats_aux) %in% c('THIRTYDAY_EXPIRE_FLAG')]
       var = "HOSPITAL_EXPIRE_FLAG"
     }
     
     else {
       stats_aux$THIRTYDAY_EXPIRE_FLAG <- ifelse(stats_aux$THIRTYDAY_EXPIRE_FLAG == 1, "Death", "Alive")
+      stats_aux <- stats_aux[, !names(stats_aux) %in% c('HOSPITAL_EXPIRE_FLAG')]
       var = "THIRTYDAY_EXPIRE_FLAG"
     }
     
