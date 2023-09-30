@@ -702,6 +702,7 @@ sepsis3_alistairewj <- "WITH abx_p as (
               , lo.lods as lods
               , si.sirs as sirs
               , qs.qsofa as qsofa
+              , spii.sapsii as sapsii
           
           from sepsis3_cohort co
           inner join `physionet-data.mimiciii_clinical.icustays` ie
@@ -734,6 +735,8 @@ sepsis3_alistairewj <- "WITH abx_p as (
             on co.icustay_id = lo.icustay_id
           left join `physionet-data.mimiciii_derived.qsofa` qs
             on co.icustay_id = qs.icustay_id
+          left join `physionet-data.mimiciii_derived.sapsii` spii
+            on co.icustay_id = spii.icustay_id
           left join `physionet-data.mimiciii_derived.vitals_first_day` vit
             on co.icustay_id = vit.icustay_id
           left join `physionet-data.mimiciii_derived.labs_first_day` lab
