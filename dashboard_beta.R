@@ -1443,7 +1443,7 @@ The tool is divided on 5 side main menus, each one giving you different function
                          conditionalPanel(condition = "input.train_button > 0",
                                           
                                           box(
-                                            title = "Model Performance",
+                                            title = "Model Performance in the training set",
                                             solidHeader = TRUE,
                                             width = 12,
                                             status = "primary",
