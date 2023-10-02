@@ -6,11 +6,11 @@
 > :bookmark_tabs: Abstract:
 
 ## Files:
-- **dashboard_beta.R** - main file with the complete tool 
+- **dashboard_beta.R** - main file with the complete tool, which contains the code described in the dissertation.
 - **src** foder:
     <ul>
-      <li> sepsis.R - file with the data for the sepsis-3 definition </li>
-      <li> dashboard_predictions.R - file with just the <b>menu Predictions</b> from <b>dashboard_beta.R</b> and without the <b>help button</b></li>
+      <li> sepsis.R - file with the data for the sepsis-3 definition. </li>
+      <li> dashboard_predictions.R - file with just the <b>menu Predictions</b> from <b>dashboard_beta.R</b> and without the <b>help button</b>, used for tests, but working. </li>
     </ul>
 
 ## Requirements:
