@@ -6,7 +6,8 @@
 2. [Abstract](Abstract)
 3. [Files Explanation](Files)
 4. [Requirements](Requirements)
-5. [Notes about the work](Notes)
+5. [How to use](How-to-use)
+6. [Notes about the work](Notes)
 
 ---------------------------------------------------------------------------------
 > :bookmark_tabs: Resumo:
@@ -47,6 +48,13 @@
 ## Requirements:
 - R version 4.1.2
 - RStudio version 2022.02.3
+
+## How to use
+Once you have all the requirements, you just need to click on the following button, in the top right corner of the RStudio main screen:
+![runApp](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/e034eeb4-97d8-4dbf-92ff-6804d84d88d1)
+
+If you have any questions while using the application, just click on the help button in the top right corner of the application:
+![helpButton](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/66dae2a1-4846-4eb6-b855-3f2bbd985351)
 
 ## Notes
 > :link: This is the code repository associated with the masters dissertation available at the following link [here](add).
