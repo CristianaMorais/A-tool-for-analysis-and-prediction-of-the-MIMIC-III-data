@@ -49,6 +49,6 @@
 - RStudio version 2022.02.3
 
 ## Notes
-> :link: This is the code repository associated with the masters dissertation available in this:
+> :link: This is the code repository associated with the masters dissertation available at the following link [here](add).
 
-> The original tool, which is the basis of the tool, is available at the following link [here](https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III). 
+> :link: The original tool, which is the basis of the tool, is available at the following link [here](https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III). 
