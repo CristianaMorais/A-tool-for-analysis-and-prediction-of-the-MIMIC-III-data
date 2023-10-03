@@ -2,7 +2,7 @@
 
 ### Index
 
-1. [Explanation](#explanation)
+1. [Explanation](#explanation):woman_teacher:
 2. [Resumo da Dissertação](#resumo-da-dissertação):bookmark_tabs: 
 3. [DissertationAbstract](#dissertation-abstract):bookmark_tabs: 
 4. [Files Explanation](#files-explanation)📂
