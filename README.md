@@ -2,9 +2,9 @@
 
 ### Index
 
-1. [Exlanation](#explanation)
+1. [Explanation](#explanation)
 2. [Resumo da Dissertação](#resumo-da-dissertação):bookmark_tabs: 
-3. [Abstract](#abstract):bookmark_tabs: 
+3. [DissertationAbstract](#dissertation-abstract):bookmark_tabs: 
 4. [Files Explanation](#files-explanation)📂
 5. [Requirements](#requirements)🗃️
 6. [How to use](#how-to-use)❓
@@ -31,7 +31,7 @@ Para atingir esses objetivos, foram avaliados vários classificadores com estrat
 
 Em resumo, os resultados deste estudo não apenas contribuem para a compreensão da sépsis, mas também estabelecem uma base sólida para a pesquisa em diversos cenários de cuidados intensivos e a exploração de uma ampla variedade de desfechos clínicos nos dados da MIMIC-III. Apesar dos resultados satisfatórios, reconhecemos a existência de limitações e a necessidade de futuras melhorias.
 
-# Abstract
+# Dissertation Abstract
 
 The MIMIC-III dataset, a rich source of clinical information from intensive care units, plays a crucial role in the analysis and prediction of sepsis, a potentially fatal condition with high mortality rates. This study focuses its efforts on exploring the data to gain a deeper understanding of underlying risk factors, disease progression, and outcomes associated with this critical condition. By adding an interface to the MIMIC-III database, we have made it possible to study patients admitted to the ICU, allowing for patient data visualization and the construction of predictive models. For a case study, we used a potentially fatal condition in hospitalized patients with high mortality rates.
 
