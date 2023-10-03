@@ -1,5 +1,5 @@
 # :pushpin: A tool for analysis and prediction of the MIMIC-III data :computer:
----------------------------------------------------------------------------------
+
 ### Index
 
 1. [Resumo](#resumo)
@@ -8,6 +8,7 @@
 4. [Requirements](#requirements)
 5. [How to use](#how-to-use)
 6. [Notes about the work](#notes)
+
 
 ---------------------------------------------------------------------------------
 
@@ -25,9 +26,8 @@
 >
 >Em resumo, os resultados deste estudo não apenas contribuem para a compreensão da sépsis, mas também estabelecem uma base sólida para a pesquisa em diversos cenários de cuidados intensivos e a exploração de uma ampla variedade de desfechos clínicos nos dados da MIMIC-III. Apesar dos resultados satisfatórios, reconhecemos a existência de limitações e a necessidade de futuras melhorias.
 
----------------------------------------------------------
-
 # :bookmark_tabs: Abstract:
+
 >The MIMIC-III dataset, a rich source of clinical information from intensive care units, plays a crucial role in the analysis and prediction of sepsis, a potentially fatal condition with high mortality rates. This study focuses its efforts on exploring the data to gain a deeper understanding of underlying risk factors, disease progression, and outcomes associated with this critical condition. By adding an interface to the MIMIC-III database, we have made it possible to study patients admitted to the ICU, allowing for patient data visualization and the construction of predictive models. For a case study, we used a potentially fatal condition in hospitalized patients with high mortality rates.
 >
 >The development of a robust tool to analyze and predict sepsis from this data is of utmost importance to enable early detection, timely interventions, and personalized treatments. This tool has the potential to assist physicians in the immediate identification of this disease, as well as risk assessment and effective resource allocation, which can result in better outcomes for patients.
@@ -41,6 +41,7 @@
 >In summary, the results of this study not only contribute to the understanding of sepsis but also establish a solid foundation for research in various intensive care settings and the exploration of a wide range of clinical outcomes in MIMIC-III data. Despite satisfactory results, we acknowledge the existence of limitations and the need for future improvements.
 
 # Files:
+
 - **dashboard_beta.R** - main file with the complete tool, which contains the code described in the dissertation.
 - **src** foder:
     <ul>
