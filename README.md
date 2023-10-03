@@ -2,7 +2,7 @@
 
 ### Index
 
-1. [Resumo da Dissertação](#resumo-da-dissertacao):bookmark_tabs: 
+1. [Resumo da Dissertação](#resumo-da-dissertação):bookmark_tabs: 
 2. [Abstract](#abstract):bookmark_tabs: 
 3. [Files Explanation](#files-explanation)📂
 4. [Requirements](#requirements)🗃️
