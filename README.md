@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------------
 ### Index
 
-1. [Resumo](Resumo)
+1. [Resumo](resumo)
 2. [Abstract](Abstract)
 3. [Files Explanation](Files)
 4. [Requirements](Requirements)
@@ -10,7 +10,7 @@
 6. [Notes about the work](Notes)
 
 ---------------------------------------------------------------------------------
-> :bookmark_tabs: Resumo:
+## Resumo :bookmark_tabs:
 >O conjunto de dados MIMIC-III, uma rica fonte de informações clínicas provenientes de unidades de cuidados intensivos, desempenha um papel crucial na análise e previsão da sépsis, uma condição potencialmente fatal com elevadas taxas de mortalidade. Este estudo concentra seus esforços na exploração dos dados com o objetivo de entender mais profundamente os fatores de risco subjacentes, a progressão da doença e os desfechos associados a essa condição crítica. Adicionando uma interface à base de dados MIMIC-III, tornamos possível o estudo dos pacientes que dão entrada na UCI, permitindo a visualização dos dados dos pacientes e a construção de modelos preditivos. Para um estudo de caso, utilizamos uma condição potencialmente fatal em pacientes internados, com elevadas taxas de mortalidade.
 >
 >O desenvolvimento de uma ferramenta robusta para analisar e prever a sépsis a partir desses dados é de extrema importância para possibilitar a deteção precoce, intervenções oportunas e tratamentos personalizados. Essa ferramenta tem o potencial de auxiliar os médicos na identificação imediata desta doença, bem como na avaliação de riscos e na alocação eficaz de recursos, o que pode resultar em melhores desfechos para os pacientes.
