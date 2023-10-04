@@ -60,9 +60,11 @@ In summary, the results of this study not only contribute to the understanding o
 
 # How to use
 Once you have all the requirements, you just need to click on the following button, in the top right corner of the RStudio main screen:
+
 ![runApp](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/e034eeb4-97d8-4dbf-92ff-6804d84d88d1)
 
 If you have any questions while using the application, just click on the help button in the top right corner of the application:
+
 ![helpButton](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/66dae2a1-4846-4eb6-b855-3f2bbd985351)
 
 # Notes
