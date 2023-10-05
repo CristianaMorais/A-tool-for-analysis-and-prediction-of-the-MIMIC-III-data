@@ -1,4 +1,4 @@
-# :pushpin: A tool for analysis and prediction of the MIMIC-III data :computer:
+[Uma_ferramenta_para_análise_e_previsão_dos_dados_da_MIMIC_III.pdf](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/files/12818725/Uma_ferramenta_para_analise_e_previsao_dos_dados_da_MIMIC_III.pdf)# :pushpin: A tool for analysis and prediction of the MIMIC-III data :computer:
 
 ### Index
 
@@ -72,6 +72,6 @@ If you have any questions while using the application, just click on the help bu
 ![helpButton](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/66dae2a1-4846-4eb6-b855-3f2bbd985351)
 
 # Notes
-> :link: This is the code repository associated with the masters dissertation, it's available [here](add).
+> :link: This is the code repository associated with the masters dissertation, it's available [here](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/files/12818730/Uma_ferramenta_para_analise_e_previsao_dos_dados_da_MIMIC_III.pdf).
 
 > :link: The original app, which is the basis of this tool, it's available [here](https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III). 
