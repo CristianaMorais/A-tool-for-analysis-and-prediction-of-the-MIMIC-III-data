@@ -14,7 +14,8 @@
 ---------------------------------------------------------------------------------
 
 # Explanation
-
+A tool already existed, which is a graphical interface in R that collects the data relating to the patients in this database, relates the various tables in it, and presents the relevant information in a simple way, but without neglecting functionality. It contains graphics, tables and text generated in real time, so that the user can find out many details about the MIMIC-III database without needing to know any kind of programming language.
+Our tool is therefore a complement to the existing one. A new menu has been added to it, in which the user can analyze the data in different ways, in relation to a disease, train and compare models and then use them to make predictions. At the moment, and as the case study is sepsis, there are only two target variables, mortality from sepsis and 30-day mortality from sepsis.
 <br>
 
 # Resumo da dissertação
@@ -69,6 +70,6 @@ If you have any questions while using the application, just click on the help bu
 ![helpButton](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/66dae2a1-4846-4eb6-b855-3f2bbd985351)
 
 # Notes
-> :link: This is the code repository associated with the masters dissertation available at the following link [here](add).
+> :link: This is the code repository associated with the masters dissertation, it's available [here](add).
 
-> :link: The original tool, which is the basis of the tool, is available at the following link [here](https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III). 
+> :link: The original app, which is the basis of this tool, it's available [here](https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III). 
