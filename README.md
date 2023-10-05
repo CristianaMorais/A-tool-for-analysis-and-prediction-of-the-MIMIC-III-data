@@ -60,7 +60,7 @@ In summary, the results of this study not only contribute to the understanding o
 - R version 4.1.2
 - RStudio version 2022.02.3
 - Only credentialed users who sign the DUA can access the MIMIC-III data, so it's required the training CITI Data or Specimens Only Research available [here](https://physionet.org/content/mimiciii/1.4/).
-- Acesso ao BigQuery, com tutorial de uso disponível [here](https://mimic.mit.edu/docs/iii/tutorials/intro-to-mimic-iii-bq/)
+- Access to BigQuery, with tutorial available [here](https://mimic.mit.edu/docs/iii/tutorials/intro-to-mimic-iii-bq/)
 
 # How to use
 Once you have all the requirements, you just need to click on the following button, in the top right corner of the RStudio main screen:
