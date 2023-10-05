@@ -15,6 +15,7 @@
 
 # Explanation
 A tool already existed, which is a graphical interface in R that collects the data relating to the patients in this database, relates the various tables in it, and presents the relevant information in a simple way, but without neglecting functionality. It contains graphics, tables and text generated in real time, so that the user can find out many details about the MIMIC-III database without needing to know any kind of programming language.
+
 Our tool is therefore a complement to the existing one. A new menu has been added to it, in which the user can analyze the data in different ways, in relation to a disease, select features for the models, train and compare models and then use them to make predictions. At the moment, and as the case study is sepsis, there are only two target variables, mortality from sepsis and 30-day mortality from sepsis.
 <br>
 
