@@ -4215,7 +4215,58 @@ server <- (function(input, output,session) {
     } 
     
     else if (input$info_select %in% c("Predictions")) {
-      return("Explicação de Predictions")
+      html_predictions <- HTML('
+                              There are six options in this sidebar menu, each on a tab, 
+                              with the following functionalities:
+                              <ul>
+                                <li><b>Data Extraction</b><br>
+                                      In this tab, the user selects a type of outcome, 
+                                      along with a disease, and at the bottom of the window 
+                                      the most common data selected for that disease will appear.
+                                      For this version of the tool, the case study is sepsis, more specifically 
+                                      the sepsis-3 definition that was adapted from the 
+                                      available code <a href="https://github.com/alistairewj/sepsis3-mimic">here</a>.
+                                </li>
+                                
+                                <li><b>Summary</b><br>
+                                      Two types of summaries appear on this tab, each on a tab with a table.
+                                      The first contains the mean and SD, while the second also contains 
+                                      the median, 25th percentile, 75th percentile, min and max for each 
+                                      variable.
+                                </li>
+                                
+                                <li><b>Features</b><br>
+                                      Here the user can select the 
+                                      variables that will be used in the following tabs, such as training the model.
+                                      There are already pre-defined variables, 
+                                      selected according to articles related to the chosen disease, in this case sepsis.
+                                      
+                                </li>
+                                
+                                <li><b>Train Model</b><br>
+                                      In this tab, the user selects the model they want to train, 
+                                      which will be used in the predictions, and can choose the type of data split, 
+                                      with the percentage chosen being for the training data, the rest being for 
+                                      the test data. For example, 70% training and 30% testing, 
+                                      as can be seen in the pre-defined data.
+                                </li>
+                                
+                                <li><b>Model Comparison</b><br>
+                                      It allows you to compare the model trained in the previous tab, 
+                                      which appears on the left-hand side of the screen, with a different model 
+                                      on the right-hand side.
+                                </li>
+                                
+                                <li><b>Make Prediction</b><br>
+                                      Allows the user, depending on the previously selected features, 
+                                      to add new data (in the box on the left side of this tab) and 
+                                      which will be used to make the prediction (where the results will 
+                                      appear on the right side in a box).
+                                </li>
+                              </ul>
+                
+                              ')
+      return(html_predictions)
     } 
     
     else if (input$info_select == "Patients") {
@@ -4247,7 +4298,9 @@ server <- (function(input, output,session) {
   output$info_text_ui <- renderUI({
     if (!is.null(input$sub_option_select) && input$sub_option_select != "") {
       textOutput("info_text")
-    } else {
+    } 
+    
+    else {
       NULL
     }
   })
@@ -4282,11 +4335,3 @@ server <- (function(input, output,session) {
 })
 
 shinyApp(ui, server)
-
-#TODO 18/7/2022
-
-#COMPARAR PERCURSO DO DOENTE PARA UMA DOEN???A ( onde tenha muitos outliers). Um outlier vs poucos dias. 1 aleatorio. 
-# + grafico caregivers . Mostrar itens do paciente internado + numero de caregivers + exames? 
-
-
-#METER AGE NO SEARCH BY PATIENT ID
