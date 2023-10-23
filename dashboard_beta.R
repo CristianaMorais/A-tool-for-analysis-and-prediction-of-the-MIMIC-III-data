@@ -634,7 +634,7 @@ body <- dashboardBody(
                 br(),
                HTML("This dashboard allows to explore the MIMIC-III Database without needing some sort of programming skills. 
 
-The tool is divided on 5 side main menus, each one giving you different functions.  The data is displayed with the help of tables, graphs and text. In menus where data is filtered and subseted by the user, the option to download it to the user machine is available."),
+The tool is divided on 6 side main menus, each one giving you different functions.  The data is displayed with the help of tables, graphs and text. In menus where data is filtered and subseted by the user, the option to download it to the user machine is available."),
                 
                 
                 
@@ -4210,13 +4210,62 @@ server <- (function(input, output,session) {
   output$sub_option_ui <- renderUI({
     req(input$info_select)  # Check that input$info_select is not empty or missing
     
+    if (input$info_select %in% c("Dashboard", "Predictions")) {
+      return(NULL)
+    }
+    
+    else if (input$info_select == "Patients") {
+      selectInput("sub_option_select", "Select a submenu item",
+                  choices = c("", "General Patient Info", "Pacient Search by ID"))
+    } 
+    
+    else if (input$info_select == "Admissions") {
+      selectInput("sub_option_select", "Select a submenu item",
+                  choices = c("", "General Admissions info", "Search by admission ID"))
+    } 
+    
+    else if (input$info_select == "Diagnoses") {
+      selectInput("sub_option_select", "Select a submenu item",
+                  choices = c("", "General Diagnoses info", "Specific ICD9 Group details", "Diagnoses search by ICD", "First Diagnoses - comparison", "Diagnoses search by patient ID"))
+    } 
+    
+    else if (input$info_select == "ICU") {
+      selectInput("sub_option_select", "Select a submenu item",
+                  choices = c("", "General ICU stays Info", "Patient Mortality"))
+    } 
+    
+    else {
+      NULL
+    }
+  })
+  
+  # Define the app information text based on the selected sub-option
+  output$info_text_ui <- renderText({
+    selected_sub_option <- input$sub_option_select
+    
     if (input$info_select %in% c("Dashboard")) {
-      return("Explicação da dashboard")
+      app_info_text <- HTML('The dashboard is the initial page of the tool.
+                             Divided into 8 components, with each of them contained in a box: 
+                             statistics and general data about the MIMIC-III database; 
+                             introductory text to the tool; 
+                             histogram of LOS for the entire hospital, ages, and age-specific mortality; 
+                             pie charts showing the distribution of ethnicity, gender, and ethnicity-specific mortality.
+                             In the box containing the statistics, general data and statistics in text format about the MIMIC-III database are presented, such as:
+                             <ul>
+                                <li>Total number of patients;</li>
+                                <li>Number of hospital admissions;</li>
+                                <li>Number of ICU admissions;</li>
+                                <li>Percentage of male patients;</li>
+                                <li>Average age of patients in years;</li>
+                                <li>Average Length of Stay (LOS) for the entire MIMIC-III database in days;</li>
+                                <li>Hospital mortality percentage.</li>
+                              </ul>
+                             It is possible to zoom in on the graphs, select only a small part of them for viewing or, 
+                             for example, interact with the graph and provide extra information during mouse-over.')
     } 
     
     else if (input$info_select %in% c("Predictions")) {
-      html_predictions <- HTML('
-                              There are six options in this sidebar menu, each on a tab, 
+      app_info_text <-HTML('There are six options in this sidebar menu, each on a tab, 
                               with the following functionalities:
                               <ul>
                                 <li><b>Data Extraction</b><br>
@@ -4266,64 +4315,214 @@ server <- (function(input, output,session) {
                               </ul>
                 
                               ')
-      return(html_predictions)
     } 
     
-    else if (input$info_select == "Patients") {
-      selectInput("sub_option_select", "Select a submenu item",
-                  choices = c("", "General Patient Info", "Pacient Search by ID"))
-    } 
+    else if (!is.null(selected_sub_option)) {
+      app_info_text <- switch(selected_sub_option,
+                              "General Patient Info" = HTML("
+                                <p>The focus here is to present as detailed information as possible about a group of patients, observe it, and if desired, download it.</p>
+                                <p>For this, the user can filter these patients by various attributes (attributes from the dataframe df), and summarized information is presented based on the applied filters.</p>
+                                <p>Furthermore, under this same summarized information, a table is presented consisting of all patients affected in the previous selection and also 6 graphs whose objective is to help you understand the distribution and characteristics of the data you selected.</p>
+                                <p>The 6 charts consist of 5 pie charts and a histogram. The histogram contains patient ages, including patients over 89 years old. The remaining pie charts represent: ethnic distribution, type of admission, type of insurance, location of admission, and location after discharge.</p>
+                                <p>It is also possible to zoom in on the graph and select just one area to observe, allowing you to observe the data provided in detail.</p>
+                              "), 
+                              
+                              "Pacient Search by ID" = HTML(" This menu allows the user to input or select a patient's ID (SUBJECT_ID) in an input selection box. Through the patient's ID, detailed patient information can be accessed, along with all of their hospital admissions. When entering the SUBJECT_ID, it's possible to select the patient's ID from the available options or manually input it. As each digit of the ID is entered, suggestions of existing IDs in the PATIENTS table are displayed to expedite the process.
+
+                                Once a valid ID is entered, detailed information about the patient is displayed on the right side in a table sourced from the dataframe df. This information includes:
     
-    else if (input$info_select == "Admissions") {
-      selectInput("sub_option_select", "Select a submenu item",
-                  choices = c("", "General Admissions info", "Search by admission ID"))
-    } 
+                                <ul>
+                                    <li>
+                                      Unique identification number
+                                    </li>
+                                    <li>
+                                      Gender
+                                    </li>
+                                    <li>
+                                      Date of birth
+                                    </li>
+                                    <li>
+                                    Date of death, both recorded by the hospital and SSN (Social Security Number)
+                                    </li>
+                                    <li>
+                                      Expire flag (indicator of whether the patient passed away in the hospital, marked as 1 if true)
+                                    </li>
+                                    <li>
+                                      Age
+                                    </li>
+                                    <li>
+                                      Date of first hospital admission</li>
+                                    <li>
+                                      Date and time of hospital discharge
+                                    </li>
+                                    <li>
+                                      Time of death
+                                    </li>
+                                    <li>Type and location of the first admission</li>
+                                    <li>Destination after discharge</li>
+                                    <li>Patient's insurance</li>
+                                    <li>Language (if available)</li>
+                                    <li>Religion</li>
+                                    <li>Marital status</li>
+                                    <li>Ethnicity</li>
+                                    <li>Date of ICU discharge</li>
+                                    <li>Rapid diagnosis performed at hospital admission</li>
+                                  </ul>
     
-    else if (input$info_select == "Diagnoses") {
-      selectInput("sub_option_select", "Select a submenu item",
-                  choices = c("", "General Diagnoses info", "Specific ICD9 Group details", "Diagnoses search by ICD", "First Diagnoses - comparison", "Diagnoses search by patient ID"))
-    } 
-    
-    else if (input$info_select == "ICU") {
-      selectInput("sub_option_select", "Select a submenu item",
-                  choices = c("", "General ICU stays Info", "Patient Mortality"))
+                                In another table, all of the patient's hospital admissions are displayed. 
+                                The information presented there is sourced from a filtering of the ADMISSIONS dataframe.
+                                When the user inputs an ID in the input box, it is saved and used to filter all rows in ADMISSIONS where the SUBJECT_ID is equal to that value.
+                              "),
+                              
+                              "General Admissions info" = HTML("This page consists of 5 tabs at the top, each focusing on different attributes of the table ADMISSIONS:
+                                <ul>
+                                    <li>Admission type;</li>
+                                    <li>Admission location;</li>
+                                    <li>Discharge location;</li>
+                                    <li>Insurance;</li>
+                                    <li>Diagnosis.</li>
+                                </ul>
+                                Each of these tabs consists of a table and a histogram with data for each of the attributes."
+                              ), 
+                              
+                              "Search by admission ID" = HTML("By entering a valid HADM_ID, it is possible to obtain details about a particular hospital admission. The details offered by this search are as follows, in this order:
+                                            <ul>
+                                              <li>SUBJECT_ID of the patient;</li>
+                                              <li>Patient's HADM_ID;</li>
+                                              <li>Date and time of admission;</li>
+                                              <li>Date and time of discharge;</li>
+                                              <li>Date and time of death;</li>
+                                              <li>Type of admission;</li>
+                                              <li>Place of admission;</li>
+                                              <li>Location after discharge;</li>
+                                              <li>Insurance;</li>
+                                              <li>Language;</li>
+                                              <li>Religion;</li>
+                                              <li>Marital status;</li>
+                                              <li>Ethnicity;</li>
+                                              <li>Edregtime;</li>
+                                              <li>Edoutime;</li>
+                                              <li>Preliminary diagnosis;</li>
+                                              <li>Hospital death or not;</li>
+                                              <li>Existence or not of data in chart events.</li>
+                                            </ul>
+                                              
+                                The options consist of all the admission IDS."
+                                
+                              ),
+                              
+                              "General Diagnoses info" = HTML("This sub-menu focuses especially on the different ICD-9 code groups, giving an overview of the frequency of each one, its LOS and even more detailed information, 
+                                with a summary of each ICD-9 code group.
+                                The absolute frequency of each is shown in a histogram and a boxplot of the LOS for each of these groups.
+                                Both are placed side by side on the same line, and a menu is placed underneath them where you can enter an ICD code group and view its summary information.
+                                
+                                This page is divided into two large parts: a top line where the two graphs are arranged, and another below it, where the graph of the 20 most frequent ICD's is 
+                                placed and the information to be summarized is chosen.
+                                
+                                The ADMISSIONS table has been divided into 19 smaller dataframes, each containing a group of ICD-9 codes. Each dataframe contains only a subset of patients diagnosed with a 
+                                given range of ICD-9 codes, keeping all the same attributes as the original dataframe (ADMISSIONS).
+                                                              
+                                Each bar of the histogram shows the absolute frequency and by hovering over any of the bars, a short text description of the corresponding ICD9 is displayed.
+                                The same goes for the other histogram on this page, with the aim of quickly identifying the disease"
+                              ), 
+                              
+                              "Specific ICD9 Group details" = HTML("This submenu displays frequency and LOS graphs, however, unlike the previous submenu, it focuses on displaying each of the ICD-9 codes specifically and not just a group of codes.
+
+                              Using the side menu you can select a group you want to look at, for example 'Diseases of the respiratory system(460-519)'.
+
+                              As soon as this option is selected, a bar graph is generated with the number of patients on the Y axis and the ICD-9 code on the X axis. Each bar shows the number of patients with that specific code, in descending order of cases. In other words, on the left-hand side of the graph are the most frequent codes within the chosen ICD group and on the right the least. At the same time, a boxplot corresponding to the LOS of that same group is also generated under this bar graph. The previous menu displayed the same type of graph, but with the aim of comparing with other ICDs. This one, on the other hand, gives a more detailed view of the graph, allowing you to clearly see the values in the graph by mouse-over. When you mouse-over, you can see:
+                              
+                              <ul>
+                                <li>Minimum value;</li>
+                                <li>Maximum value;</li>
+                                <li>1st quartile;</li>
+                                <li>3rd quartile</li>
+                                <li>Median;</li>
+                                <li>Upper limit;</li>
+                                <li>Outliers/Atypical values;</li>
+                              </ul>
+                              
+                              In addition, the possibility offered by Plotly to zoom in on the graph and select only one zone to observe allows us to observe in detail the data provided by the boxplot."
+                              ), 
+                              
+                              "Diagnoses search by ICD" = HTML("In addition to general statistics on each general ICD group, in this tool it is possible to search exactly for a specific ICD code and thus obtain information on which patients have been diagnosed with that same disease, the number of times each patient has been diagnosed with it in the various hospitalizations and also summarized data on those same patients, for example: age, gender, the severity/priority of that ICD for the patients based on the SEQ_NUM value, mortality rate, among others.
+
+                                    To this end, data was gathered from four tables: PATIENTS, DIAGNOSES, D_ICD_DIAGNOSES and ICUSTAYS.
+                                    
+                                    When selecting the input, an ICD code must be entered in order to see if there are any patients diagnosed with that ICD-9 code. If not, the table will appear empty, as will the summary.
+                                    
+                                    To the right of the input menu, a table is displayed, inside an R Shiny box, with all the patients diagnosed with the same disease, displaying the following information for each patient:
+                                    <ul>
+                                      <li>SUBJECT_ID;</li>
+                                      <li>HADM_ID;</li>
+                                      <li>SEQ_NUM;</li>
+                                      <li>ICD-9 CODE;</li>
+                                      <li>SHORT TITLE;</li>
+                                      <li>LONG TITLE;</li>
+                                      <li>LOS;</li>
+                                    </ul>
+                                    
+                                    It should be noted, however, that the LOS value shown refers to the entire admission. A patient who has been hospitalized multiple times and diagnosed with the same DCI will also appear on this list multiple times (the different hospitalizations being distinguished by the HADM_ID), and the corresponding LOS will vary depending on the hospitalization.
+                                    In addition to this information, a summary of all the previously selected data is also displayed."
+                                
+                              ), 
+                              
+                              "First Diagnoses - comparison" = HTML("This submenu focuses on analyzing which are the first diagnoses of each hospital admission. 
+                                Each diagnosis has a SEQ_NUM, which indicates the priority level of the disease for the patient, so this submenu aims to help you understand which diagnoses are most relevant by selecting all the diagnoses in the DIAGNOSES_ICD table 
+                                whose SEQ_NUM is equal to 1. In addition, a table has been created that compares the initial diagnosis made at hospital admission for each hospital admission (present in the ADMISSIONS table) with the actual disease diagnosed (present with SEQ_NUM equal to 1 in the DIAGNOSES_ICD table).
+                                
+                                This menu consists of three boxes: the first is responsible for displaying a bar chart using Plotly, showing the number of diagnoses with SEQ_NUM equal to 1 for each ICD group; the second contains text in HTML format explaining the operation and purpose of this page and, finally, the third contains the table comparing the diagnoses made on admission to hospital with the true diagnosis.
+                                "
+                                
+                              ), 
+                              
+                              "Diagnoses search by patient ID" = HTML("The function of this submenu is to provide all the patient's diagnoses from the DIAGNOSES table by entering the patient's ID.
+                                To view a patient's entire medical history using their ID in one place, simply enter the ID in a search box and all the information is displayed in a table that allows you to sort and filter the data. 
+                                When a patient is admitted to hospital, an ICD-9 disease code is associated with that admission, which identifies precisely what the patient's problem is, but often a patient doesn't have just one disease associated with them, but several. 
+                                In other words, one hospitalization is associated with multiple ICD-9 codes. 
+                                Their degree of importance and severity in the case of each patient is defined by the SEQ_NUM field, and this number is higher the lower its relevance."
+                              ),
+                              
+                              "General ICU stays Info" = HTML("The purpose of this submenu is to enable the user to filter all ICU hospitalizations in the ICUSTAYS table by certain attributes. The attributes are as follows:
+                                <ul>
+                                  <li>Gender;
+                                  <li>Ethnicity;
+                                  <li>Death in hospital;
+                                  <li>Death;
+                                  <li>First and last ICU unit;
+                                  <li>First and last ward;
+                                  <li>LOS;
+                                  <li>Age.
+                                </ul>
+                                
+                                In addition, the Download button allows the data to be displayed at that moment to be downloaded to the user's machine in CSV format. 
+                                
+                                There are three divisions: data summary, table and graphs. One box shows the output of the summary, with filtered ICUcomplete as the input. 
+                                                              
+                                Below this, another box contains a table with the filtered ICUcomplete dataframe. Under these 2 previous boxes, 4 graphs are displayed: LOS boxplot, age histogram, first unit and last unit ICU circular graphs.
+                                Each of the graphs receives the filtered information as in the Patients Info menu."
+                                
+                              ), 
+                              
+                              "Patient Mortality" = HTML("This submenu provides information on patients who did not die in hospital, but who died after being discharged. For this submenu, a dataframe was created, days_before_death, 
+                                                         which records all patients who died after being discharged.
+                                                         This dataframe is the result of a filter, which selects all the patients who didn't die in hospital, but who died after leaving hospital.
+                                                         A new 'days' column is then added, where the difference between the date of death and the date of discharge is calculated.
+                                                         
+                                                         This submenu is organized in a structure where you can select a range of the number of days between the date of discharge and the date of death in a horizontal input selection bar. After clicking on the Select button, the dataframe is filtered and output is given in 3 formats: table containing all the patients covered by the filter, summary of those same patients and graphs that help you get to know those patients better.
+                                                         You can also download the filtered dataframe to your machine by clicking on Download and a file in CSV format will be downloaded.
+                                                         The graphs contained in this submenu are as follows: mortality by ethnicity in a circular graph, mortality histogram by age and mortality histogram by ICD."
+                                                                                          
+                              ),
+                              
+                              "default" = "Please select a valid sub-option."
+      )
     } 
     
     else {
-      NULL
+      app_info_text <- ""
     }
-  })
-  
-  # Render the text output UI conditionally based on the selected sub-option
-  output$info_text_ui <- renderUI({
-    if (!is.null(input$sub_option_select) && input$sub_option_select != "") {
-      textOutput("info_text")
-    } 
     
-    else {
-      NULL
-    }
-  })
-  
-  # Define the app information text based on the selected sub-option
-  output$info_text <- renderText({
-    selected_sub_option <- input$sub_option_select
-    app_info_text <- switch(selected_sub_option,
-                            "General Patient Info" = "General Patient Info information" , 
-                            "Pacient Search by ID" = "Pacient Search by ID information",
-                            
-                            "General Admissions info" = "General Admissions info information", 
-                            "Search by admission ID" = "Search by admission ID information",
-                            
-                            "General Diagnoses info" = "General Diagnoses info information", 
-                            "Specific ICD9 Group details" = "Specific ICD9 Group details information", 
-                            "Diagnoses search by ICD" = "Diagnoses search by ICD information", 
-                            "First Diagnoses - comparison" = "First Diagnoses - comparison information", 
-                            "Diagnoses search by patient ID" = "Diagnoses search by patient ID information",
-                            
-                            "General ICU stays Info" = "General ICU stays Info information", 
-                            "Patient Mortality" = "Patient Mortality information",
-                            "")
     return(app_info_text)
   })
   
