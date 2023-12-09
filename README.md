@@ -130,4 +130,4 @@ If you have any questions while using the application, just click on the help bu
 # Notes
 > :link: This is the code repository associated with the masters dissertation, which is available [here]().
 
-> :link: The original application, which is the basis of this tool, has the code available <a href="https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III" target="_blank">here</a> and the associated dissertation [here](https://hdl.handle.net/10216/146737).
+> :link: The original application, which is the basis of this tool, has the code available <a href="https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III" target="_blank">here</a> and the associated dissertation <a href="https://hdl.handle.net/10216/146737" target="_blank">here</a>.
