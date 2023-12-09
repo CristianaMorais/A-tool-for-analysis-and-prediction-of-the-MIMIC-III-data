@@ -1,4 +1,4 @@
-# :pushpin: A tool for analysis and prediction of the MIMIC-III data :computer:
+# 📍 A tool for analysis and prediction of the MIMIC-III data 💻
 
 ### Index
 
