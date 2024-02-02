@@ -128,6 +128,6 @@ If you have any questions while using the application, just click on the help bu
 ![helpButton](https://github.com/CristianaMorais/A-tool-for-analysis-and-prediction-of-the-MIMIC-III-data/assets/20134178/66dae2a1-4846-4eb6-b855-3f2bbd985351)
 
 # Notes
-> :link: This is the code repository associated with the masters dissertation, which is available [here]().
+> :link: This is the code repository associated with the masters dissertation, which is available [here](https://hdl.handle.net/10216/157038).
 
 > :link: The original application, which is the basis of this tool, has the code available [here](https://github.com/nmot97/An-interface-for-exploratory-analasys-of-the-MIMIC-III) and the associated dissertation [here](https://hdl.handle.net/10216/146737).
